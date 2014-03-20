@@ -4,7 +4,7 @@
   "version": "0.1",
   "permissions": ["contextMenus", "tabs"],
   "background": {
-    "scripts": ["menu.js"]
+    "scripts": ["scripts/base64.js","scripts/tincan-min.js","menu.js"]
   },
   "manifest_version": 2
 }
