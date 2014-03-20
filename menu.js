@@ -7,7 +7,7 @@
 // Adding menu items.
 var parent = chrome.contextMenus.create({"title": "I did this:", contexts:["all"]});
 var child1 = chrome.contextMenus.create({"title": "I learned", "parentId": parent, contexts:["all"],"onclick": function(info){clicked("learned", info.selectionText)}});
-var child2 = chrome.contextMenus.create({"title": "I read", "parentId": parent, contexts:["all"], "onclick": function(){clicked("read")}});
+var child2 = chrome.contextMenus.create({"title": "I read", "parentId": parent, contexts:["all"], "onclick": function(info){clicked("read", info.selectionText)}});
 
 // Adding a onclick event
 function clicked(verb, object) {
