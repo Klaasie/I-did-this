@@ -1,0 +1,10 @@
+{
+  "name": "I did this!",
+  "description": "Creating Tin Can statements is as easy as right clicking!",
+  "version": "0.6",
+  "permissions": ["contextMenus", "tabs"],
+  "background": {
+    "scripts": ["menu.js"]
+  },
+  "manifest_version": 2
+}
