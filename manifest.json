@@ -1,8 +1,9 @@
 {
   "name": "I did this!",
   "description": "Creating Tin Can statements is as easy as right clicking!",
-  "version": "0.1",
-  "permissions": ["contextMenus", "tabs"],
+  "version": "0.3",
+  "options_page": "options.html",
+  "permissions": ["contextMenus", "tabs", "storage"],
   "background": {
     "scripts": ["scripts/base64.js","scripts/tincan-min.js","menu.js"]
   },
