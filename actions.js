@@ -36,15 +36,15 @@ function clicked(verb, object) {
 		}
 
 		// Debugging: a check if all the data is there.
-		console.log(endpoint);
-		console.log(username);
-		console.log(password);
-		console.log(learner_name);
-		console.log(learner_email);
-		console.log(verbUrl); 
-		console.log(verb);
-		console.log(objectUrl);
-		console.log(objectText);
+		// console.log(endpoint);
+		// console.log(username);
+		// console.log(password);
+		// console.log(learner_name);
+		// console.log(learner_email);
+		// console.log(verbUrl); 
+		// console.log(verb);
+		// console.log(objectUrl);
+		// console.log(objectText);
 
 		//If all the above are set: (The above should probably be build in like a check)
 		// Prepare tin can class.

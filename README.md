@@ -14,8 +14,6 @@ You can either rightclick a page and the extension will take the website title a
 
 
 @todo:
-- Make right click menu dynamic
-- Remove waste
-- Split functions in more logical files
+- Create input field for additional verbs
 - Add icon
 - Add css
