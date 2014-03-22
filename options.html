@@ -2,35 +2,96 @@
 <html>
 	<head>
 		<title>I did this: Options</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/custom.css">
 	</head>
 	<body>
-		LRS details: (Ask your LRS administrator if you don't know these)<br>
-		<label>
-			LRS endpoint
-			<input type="text" id="endpoint" placeholder="LRS endpoint">
-		</label><br>
-		<label>
-			LRS username
-			<input type="text" id="username" placeholder="LRS username">
-		</label><br>
-		<label>
-			LRS password
-			<input type="password" id="password" placeholder="LRS password">
-		</label><br><br>
+		<div class="container">
+	      <div class="header">
+	        <ul class="nav nav-pills pull-right">
+	          <li><a class="lrs" href="#home">LRS</a></li>
+	          <li><a class="verbs" href="#verbs" >Verbs</a></li>
+	          <li><a class="Usage" href="#usage">Usage</a></li>
+	        </ul>
+	        <h3 class="text-muted">I did this!</h3>
+	      </div>
+	      <div id="status"></div>
+	      <div id="home" class="jumbotron">
+	        <div class="form-horizontal" role="form">
+	          <h3>LRS details</h3>
+			  <div class="form-group">
+			    <label for="endpoint" class="col-sm-2 control-label">LRS endpoint</label>
+			    <div class="col-sm-10">
+			      <input type="text" id="endpoint" class="form-control" placeholder="LRS endpoint">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="username" class="col-sm-2 control-label">LRS username</label>
+			    <div class="col-sm-10">
+			      <input type="text" id="username" class="form-control" placeholder="LRS username">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="password" class="col-sm-2 control-label">LRS password</label>
+			    <div class="col-sm-10">
+			      <input type="password" id="password" class="form-control" placeholder="LRS password">
+			    </div>
+			  </div>
+			  <h3>User details</h3>
+			  <div class="form-group">
+			    <label for="name" class="col-sm-2 control-label">Name</label>
+			    <div class="col-sm-10">
+			      <input type="text" id="name" class="form-control" placeholder="Your name">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="email" class="col-sm-2 control-label">Email</label>
+			    <div class="col-sm-10">
+			      <input type="text" id="email" class="form-control" placeholder="Email address">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button id="save" class="btn btn-default btn-success">Save</button>
+			    </div>
+			  </div>
+			</div>
+						
+	      </div>
 
-		User details:<br>
-		<label>
-			E-mail
-			<input id="email" placeholder="Email address">
-		</label><br>
-		<label>
-			Name
-			<input id="name" placeholder="Your name">
-		</label>
+	      <div id="statusVerb"></div>
 
-		<div id="status"></div>
-		<button id="save">Save</button>
+		  <div id="verbs" class="jumbotron">
+		  	<div class="form-horizontal" role="form">
+	          <h3>Verbs</h3>
+			  <div class="form-group">
+			    <label for="verb" class="col-sm-2 control-label">Verb display</label>
+			    <div class="col-sm-10">
+			      <input type="text" id="verb" class="form-control" placeholder="Example: read">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="verbUri" class="col-sm-2 control-label">Verb URI</label>
+			    <div class="col-sm-10">
+			      <input type="text" id="verbUri" class="form-control" placeholder="Example: http://activitystrea.ms/schema/1.0/read">
+			      <a href="https://registry.tincanapi.com/#home/verbs">Click here for a list of verbs</a>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button id="saveVerb" class="btn btn-default btn-success">Save</button>
+			    </div>
+			  </div>
+			</div>
+	      </div>
 
+	      <div id="usage" class="jumbotron">
+	          <h3>Usage</h3>
+	          <p>Rightclick and move to the I did this menu item. Select a verb and the extension will send the information to your LRS. You can either rightclick a page and the extension will take the website title as object or select a piece of text (like a headline) which will then be the object to your Tin Can Statement.</p>
+	      </div>
+
+	    </div>
+	    <script src="menu.js"></script>
 		<script src="options.js"></script>
 	</body>
 </html>

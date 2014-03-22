@@ -1,3 +1,9 @@
+// Menu function
+function nav(item){
+  document.getElementsByClassName("jumbotron").hide();
+  document.getElementById(item).show();
+}
+
 // Saves options to chrome.storage
 function save_options() {
   var endpoint = document.getElementById('endpoint').value;
@@ -12,14 +18,38 @@ function save_options() {
     password: password,
     learner_email: learner_email,
     learner_name: learner_name
-  }, function() {
+  }, function(ind, ev) {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
+    status.innerHTML = '<div class="alert alert-success">Options saved.</div>';
     setTimeout(function() {
       status.textContent = '';
-    }, 750);
+    }, 5000);
   });
+}
+
+function save_verb() {
+  var verb = document.getElementById('verb').value;
+  var verbUrl = document.getElementById('verbUri').value;
+  
+  var verbs = {
+    verb: {
+        "verb": verb,
+        "url": verbUrl
+      },
+  }
+
+  chrome.storage.sync.set({
+    collection: verbs
+  }, function() {
+    // Update status to let user know options were saved.
+    var status = document.getElementById('statusVerb');
+    status.innerHTML = '<div class="alert alert-success">Options saved.</div>';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 5000);
+  });
+  menu_init();
 }
 
 // Restores select box and checkbox state using the preferences
@@ -41,5 +71,8 @@ function restore_options() {
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+document.getElementById('save').addEventListener('click', save_options);
+document.getElementById('saveVerb').addEventListener('click', save_verb);
+
+// navigation event listeners
+//document.getElementsByClassName('verb').addEventListener('click', nav("verb"));

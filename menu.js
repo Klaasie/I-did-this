@@ -15,3 +15,4 @@ chrome.storage.sync.get("collection", function(obj){
 		chrome.contextMenus.create({"id": obj.collection[index]["verb"], "title": "I "+obj.collection[index]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(info.menuItemId, info.selectionText)}});
 	}
 });
+
