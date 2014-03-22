@@ -37,21 +37,6 @@ chrome.storage.sync.get({
 		learner_email = items.learner_email;
 	});
 
-// Adding menu items.
-
-//console.log(verbs);
-/*var menuitem = [];
-for(var index in verbs){
-	chrome.contextMenus.create({"title": "I "+verbs[index]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(verbs[index]["verb"], info.selectionText, verbs[index]["url"])}});
-}*/
-
-
-//var child1 = chrome.contextMenus.create({"id": verbs[1]["verb"], "title": "I "+verbs[1]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){console.log(info); clicked(verbs[1]["verb"], info.selectionText, verbs[1]["url"])}});
-//var child2 = chrome.contextMenus.create({"title": "I "+verbs[2]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(verbs[2]["verb"], info.selectionText, verbs[2]["url"])}});
-//var child3 = chrome.contextMenus.create({"title": "I "+verbs[3]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(verbs[3]["verb"], info.selectionText, verbs[3]["url"])}});
-//var child4 = chrome.contextMenus.create({"title": "I "+verbs[4]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(verbs[4]["verb"], info.selectionText, verbs[4]["url"])}});
-//var child5 = chrome.contextMenus.create({"title": "I "+verbs[5]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(verbs[5]["verb"], info.selectionText, verbs[5]["url"])}});
-
 // Adding a onclick event
 function clicked(verb, object) {
 	//Setting vars
@@ -109,63 +94,6 @@ function clicked(verb, object) {
 		    }
 		});
 	});
-	
-	
-
-	
-
-  	// Query to the LRS and user info.
-	/*chrome.storage.sync.get({
-		endpoint: 'https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/',
-		username: 'LRS username',
-		password: 'LRS password',
-		learner_email: 'Email address',
-		learner_name: 'Your name'
-	}, function(items) { 
-		// Check if a text is selected, in the other case we'll take the site title.
-	  	chrome.tabs.query({ currentWindow: true, active: true}, function(tab){
-	  		if(selection == undefined){
-	  			var object = tab[0].title;
-	  			var objectUrl = tab[0].url;
-	  		}else{
-	  			var object = selection;
-	  			var objectUrl = tab[0].url;
-	  		}
-
-	  		// Prepare tin can class.
-			var tincan = new TinCan({
-				recordStores: [{
-					endpoint: items.endpoint,
-					username: items.username,
-					password: items.password
-				}]
-			});
-			
-			
-			
-			// Sending statement!
-			tincan.sendStatement({
-				"actor": {
-			        "name": items.learner_name,
-			        "mbox": items.learner_email
-			     },
-			     "verb": {
-			         "id": verbUrl,
-			         "display": {"en-US": verb}
-			         },
-			     "object": {
-					"id": objectUrl,
-			        "definition": {
-			            "name": { "en-US": object }
-			        }
-			    }
-			});
-
-	  	});
-	  	
-	});*/
-
-  
   
 }
 
