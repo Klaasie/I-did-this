@@ -5,7 +5,7 @@
   "options_page": "options.html",
   "permissions": ["contextMenus", "tabs", "storage"],
   "background": {
-    "scripts": ["verbs.js", "scripts/base64.js","scripts/tincan-min.js","menu.js"]
+    "scripts": ["verbs.js", "scripts/base64.js","scripts/tincan-min.js","menu.js", "actions.js"]
   },
   "manifest_version": 2
 }
