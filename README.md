@@ -14,7 +14,5 @@ You can either rightclick a page and the extension will take the website title a
 
 
 @todo:
-- Create input field for additional verbs
+- Develop functions for configurable verbs
 - Add icon
-- Add css
-- Give feedback when a statement is being sent
