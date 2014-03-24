@@ -17,3 +17,4 @@ You can either rightclick a page and the extension will take the website title a
 - Create input field for additional verbs
 - Add icon
 - Add css
+- Give feedback when a statement is being sent
