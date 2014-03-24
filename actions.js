@@ -82,6 +82,14 @@ function clicked(verb, object) {
 		            "name": { "en-US": objectText }
 		        }
 		    }
+		}, function(){
+			// Giving the user feedback that the statement was sent.
+			var notification = webkitNotifications.createNotification(
+			  '48.png',  // icon url - can be relative
+			  'I did this!!',  // notification title
+			  'Your statement has been sent!'  // notification body text
+			);
+			notification.show();
 		});
 	});
   
