@@ -4,15 +4,20 @@
 
 // Icon: vinkje! 
 
-// Creating parent menu
-var parent = chrome.contextMenus.create({"title": "I did this:", contexts:["all"]});
+var verbsCollection; // Outside to store the object for later use.
+function menu_init(){
+	// Removing the existing menu first.
+	chrome.contextMenus.removeAll();
 
-// Retrieving Verbs
-var verbsCollection;
-chrome.storage.sync.get("collection", function(obj){
-	verbsCollection = obj; // For later use.
-	for(var index in obj.collection){
-		chrome.contextMenus.create({"id": obj.collection[index]["verb"], "title": "I "+obj.collection[index]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(info.menuItemId, info.selectionText)}});
-	}
-});
+	// Creating parent menu
+	var parent = chrome.contextMenus.create({"title": "I did this:", contexts:["all"]});
 
+	// Retrieving Verbs
+	
+	chrome.storage.sync.get("collection", function(obj){
+		verbsCollection = obj; // For later use.
+		for(var index in obj.collection){
+			chrome.contextMenus.create({"id": obj.collection[index]["verb"], "title": "I "+obj.collection[index]["verb"], "parentId": parent, contexts:["all"], "onclick": function(info){clicked(info.menuItemId, info.selectionText)}});
+		}
+	});
+}

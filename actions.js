@@ -1,4 +1,14 @@
-//Setting LRS vars
+// Check whether new version is installed
+chrome.runtime.onInstalled.addListener(function(details){
+    if(details.reason == "install"){
+		// Initializing menu.
+		menu_init();
+    }else if(details.reason == "update"){
+        menu_init();
+    }
+});
+
+// Setting LRS vars
 var endpoint;
 var username;
 var password;

@@ -1,9 +1,3 @@
-// Menu function
-function nav(item){
-  document.getElementsByClassName("jumbotron").hide();
-  document.getElementById(item).show();
-}
-
 // Saves options to chrome.storage
 function save_options() {
   var endpoint = document.getElementById('endpoint').value;
@@ -28,19 +22,47 @@ function save_options() {
   });
 }
 
-function save_verb() {
+/*function save_verb() {
   var verb = document.getElementById('verb').value;
   var verbUrl = document.getElementById('verbUri').value;
   
-  var verbs = {
+  chrome.storage.sync.get("collection", function(obj){
+    verbsCollection = obj.collection;
+    verbsCollection[verb] = {
+      "verb": verb,
+      "url": verbUrl
+    }
+
+    chrome.storage.sync.set({
+      collection: verbsCollection
+    }, function() {
+      // Update status to let user know options were saved.
+      var status = document.getElementById('statusVerb');
+      status.innerHTML = '<div class="alert alert-success">Options saved.</div>';
+      setTimeout(function() {
+        status.textContent = '';
+      }, 5000);
+    });
+
+    //Initializing menu again.
+    menu_init();
+
+  });*/
+
+  /*verbsCollection[verb] = {
+    "verb": verb,
+    "url": verbUrl
+  }*/
+
+  /*var verbs = {
     verb: {
         "verb": verb,
         "url": verbUrl
       },
-  }
+  }*/
 
-  chrome.storage.sync.set({
-    collection: verbs
+  /*chrome.storage.sync.set({
+    collection: verbsCollection
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('statusVerb');
@@ -50,7 +72,7 @@ function save_verb() {
     }, 5000);
   });
   menu_init();
-}
+}*/
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
@@ -72,7 +94,7 @@ function restore_options() {
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
-document.getElementById('saveVerb').addEventListener('click', save_verb);
+//document.getElementById('saveVerb').addEventListener('click', save_verb);
 
 // navigation event listeners
 //document.getElementsByClassName('verb').addEventListener('click', nav("verb"));
