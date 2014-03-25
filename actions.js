@@ -6,31 +6,10 @@ chrome.runtime.onInstalled.addListener(function(details){
 
 		// Sending user to config page
 		chrome.tabs.create({url: "options.html"});
-		
+
     }else if(details.reason == "update"){
         menu_init();
     }
-});
-
-// Setting LRS vars
-var endpoint;
-var username;
-var password;
-var learner_name;
-var learner_email;
-// Retrieving LRS details
-chrome.storage.sync.get({
-	endpoint: 'https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/',
-	username: 'LRS username',
-	password: 'LRS password',
-	learner_email: 'Email address',
-	learner_name: 'Your name'
-}, function(items) {
-	endpoint = items.endpoint;
-	username = items.username;
-	password = items.password;
-	learner_name = items.learner_name;
-	learner_email = items.learner_email;
 });
 
 // Adding a onclick event
@@ -48,58 +27,67 @@ function clicked(verb, object) {
 			objectText = object;
 			objectUrl = tab[0].url;
 		}
+		// Retrieving LRS details
+		chrome.storage.sync.get({
+			endpoint: 'https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/',
+			username: 'LRS username',
+			password: 'LRS password',
+			learner_email: 'Email address',
+			learner_name: 'Your name'
+		}, function(items) {
+			// Debugging: a check if all the data is there.
+			// console.log(items.endpoint);
+			// console.log(items.username);
+			// console.log(items.password);
+			// console.log(items.learner_name);
+			// console.log(items.learner_email);
+			// console.log(verbUrl); 
+			// console.log(verb);
+			// console.log(objectUrl);
+			// console.log(objectText);
 
-		// Debugging: a check if all the data is there.
-		// console.log(endpoint);
-		// console.log(username);
-		// console.log(password);
-		// console.log(learner_name);
-		// console.log(learner_email);
-		// console.log(verbUrl); 
-		// console.log(verb);
-		// console.log(objectUrl);
-		// console.log(objectText);
+			//If all the above are set: (The above should probably be build in like a check)
+			// Prepare tin can class.
+			var tincan = new TinCan({
+				recordStores: [{
+					endpoint: items.endpoint,
+					username: items.username,
+					password: items.password
+				}]
+			});
+			
+			// Sending statement!
+			tincan.sendStatement({
+				"actor": {
+			        "name": items.learner_name,
+			        "mbox": items.learner_email
+			     },
+			     "verb": {
+			         "id": verbUrl,
+			         "display": {"en-US": verb}
+			         },
+			     "object": {
+					"id": objectUrl,
+			        "definition": {
+			            "name": { "en-US": objectText }
+			        }
+			    }
+			}, function(){
+				// Giving the user feedback that the statement was sent.
+				var notification = webkitNotifications.createNotification(
+				  'img/Tick_48x48.png',  // icon url - can be relative
+				  'I did this!',  // notification title
+				  'Your statement has been sent!'  // notification body text
+				);
+				notification.show();
 
-		//If all the above are set: (The above should probably be build in like a check)
-		// Prepare tin can class.
-		var tincan = new TinCan({
-			recordStores: [{
-				endpoint: endpoint,
-				username: username,
-				password: password
-			}]
+				// Hide the message after 3 seconds
+				setTimeout(function(){
+				  notification.cancel();
+				}, 3000);
+			});
 		});
 		
-		// Sending statement!
-		tincan.sendStatement({
-			"actor": {
-		        "name": learner_name,
-		        "mbox": learner_email
-		     },
-		     "verb": {
-		         "id": verbUrl,
-		         "display": {"en-US": verb}
-		         },
-		     "object": {
-				"id": objectUrl,
-		        "definition": {
-		            "name": { "en-US": objectText }
-		        }
-		    }
-		}, function(){
-			// Giving the user feedback that the statement was sent.
-			var notification = webkitNotifications.createNotification(
-			  'img/Tick_48x48.png',  // icon url - can be relative
-			  'I did this!',  // notification title
-			  'Your statement has been sent!'  // notification body text
-			);
-			notification.show();
-
-			// Hide the message after 3 seconds
-			setTimeout(function(){
-			  notification.cancel();
-			}, 3000);
-		});
 	});
   
 }

@@ -12,7 +12,7 @@ function save_options() {
     password: password,
     learner_email: learner_email,
     learner_name: learner_name
-  }, function(ind, ev) {
+  }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.innerHTML = '<div class="alert alert-success">Options saved.</div>';
@@ -80,8 +80,8 @@ function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
     endpoint: 'https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/',
-    username: 'LRS username',
-    password: 'LRS Password',
+    username: 'username',
+    password: 'VGVzdFVzZXI6cGFzc3dvcmQ=',
     learner_email: 'Email address',
     learner_name: 'Your name'
   }, function(items) {
