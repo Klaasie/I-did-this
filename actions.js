@@ -3,6 +3,10 @@ chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason == "install"){
 		// Initializing menu.
 		menu_init();
+
+		// Sending user to config page
+		chrome.tabs.create({url: "options.html"});
+		
     }else if(details.reason == "update"){
         menu_init();
     }
@@ -85,11 +89,16 @@ function clicked(verb, object) {
 		}, function(){
 			// Giving the user feedback that the statement was sent.
 			var notification = webkitNotifications.createNotification(
-			  '48.png',  // icon url - can be relative
-			  'I did this!!',  // notification title
+			  'img/Tick_48x48.png',  // icon url - can be relative
+			  'I did this!',  // notification title
 			  'Your statement has been sent!'  // notification body text
 			);
 			notification.show();
+
+			// Hide the message after 3 seconds
+			setTimeout(function(){
+			  notification.cancel();
+			}, 3000);
 		});
 	});
   

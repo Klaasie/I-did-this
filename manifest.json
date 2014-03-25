@@ -4,8 +4,11 @@
   "version": "0.8",
   "options_page": "options.html",
   "permissions": ["contextMenus", "tabs", "storage", "notifications"],
+  "icons": {
+    "16": "img/Tick_16x16.png"
+  },
   "background": {
-    "scripts": ["scripts/jquery.js","scripts/bootstrap.min.js","verbs.js", "scripts/base64.js","scripts/tincan-min.js","menu.js", "actions.js"]
+    "scripts": ["verbs.js", "scripts/base64.js","scripts/tincan-min.js","menu.js", "actions.js"]
   },
   "manifest_version": 2
 }
