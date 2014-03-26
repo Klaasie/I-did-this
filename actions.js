@@ -56,36 +56,60 @@ function clicked(verb, object) {
 				}]
 			});
 			
-			// Sending statement!
-			tincan.sendStatement({
-				"actor": {
-			        "name": items.learner_name,
-			        "mbox": items.learner_email
-			     },
-			     "verb": {
-			         "id": verbUrl,
-			         "display": {"en-US": verb}
-			         },
-			     "object": {
-					"id": objectUrl,
-			        "definition": {
-			            "name": { "en-US": objectText }
-			        }
-			    }
-			}, function(){
-				// Giving the user feedback that the statement was sent.
-				var notification = webkitNotifications.createNotification(
-				  'img/Tick_48x48.png',  // icon url - can be relative
-				  'I did this!',  // notification title
-				  'Your statement has been sent!'  // notification body text
-				);
-				notification.show();
+			/******** 
+			********* Make a TRY {} CATCH(ERR){} function of this part. 
+			********* This way we can catch if an error occurs and give the user feedback.
+			********/
 
-				// Hide the message after 3 seconds
-				setTimeout(function(){
-				  notification.cancel();
-				}, 3000);
-			});
+			// Sending statement!
+			
+				tincan.sendStatement({
+					"actor": {
+				        "name": items.learner_name,
+				        "mbox": items.learner_email
+				     },
+				     "verb": {
+				         "id": verbUrl,
+				         "display": {"en-US": verb}
+				         },
+				     "object": {
+						"id": objectUrl,
+				        "definition": {
+				            "name": { "en-US": objectText }
+				        }
+				    }
+				}, function(result){
+					result[0].xhr.status
+					if(result[0].xhr.status == 204){
+						// Giving the user feedback that the statement was sent.
+						var notification = webkitNotifications.createNotification(
+						  'img/Tick_48x48.png',  // icon url - can be relative
+						  'I did this!',  // notification title
+						  'Your statement has been sent!'  // notification body text
+						);
+						notification.show();
+
+						// Hide the message after 3 seconds
+						setTimeout(function(){
+						  notification.cancel();
+						}, 3000);
+					}else{
+						// An error has occured, once again we give the user feedback
+						var notification = webkitNotifications.createNotification(
+						  'img/Error_48x48.png',  // icon url - can be relative
+						  'Something went wrong!',  // notification title
+						  'Your statement was not sent, please check your configurations.'  // notification body text
+						);
+						notification.show();
+
+						// Hide the message after 3 seconds
+						setTimeout(function(){
+						  notification.cancel();
+						}, 5000);
+					}
+					
+				});
+			
 		});
 		
 	});
