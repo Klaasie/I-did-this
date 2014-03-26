@@ -14,5 +14,4 @@ You can either rightclick a page and the extension will take the website title a
 
 
 @todo:
-- Build in some checks.
 - Develop functions for configurable verbs

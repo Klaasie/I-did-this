@@ -1,7 +1,7 @@
 {
   "name": "I did this!",
   "description": "Creating Tin Can statements is as easy as right clicking!",
-  "version": "0.9",
+  "version": "1.0",
   "icons": {  "16": "img/Tick_16x16.png",
               "24": "img/Tick_24x24.png",
               "32": "img/Tick_32x32.png",
