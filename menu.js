@@ -21,3 +21,4 @@ function menu_init(){
 		}
 	});
 }
+menu_init(); // re-initializing menu so it appears when chrome starts.
