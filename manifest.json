@@ -19,7 +19,6 @@
 	"background": {
 		"scripts": [
 			"verbs.js",
-			"scripts/base64.js",
 			"scripts/tincan-min.js",
 			"menu.js",
 			"actions.js"
