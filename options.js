@@ -22,7 +22,6 @@ function save_options() {
 	});
 }
 
-
 // Inserts the data from storage to the input fields
 function restore_options() {
 	chrome.storage.sync.get({
@@ -39,6 +38,12 @@ function restore_options() {
 		document.getElementById('email').value = items.learner_email;
 		document.getElementById('name').value = items.learner_name;
 	});
+}
+
+function add_verb(){
+	// Code to add verbs
+	// Probably the best way about this is to take the verbs object from verb.js
+	// Add the new verb + url to the object and save to the storage.
 }
 
 // Add event listeners to the page.
