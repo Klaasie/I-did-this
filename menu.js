@@ -1,10 +1,5 @@
-// Copyright (c) 2010 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
 
-// Icon: vinkje! 
-
-var verbsCollection; // Outside to store the object for later use.
+var verbsCollection;
 function menu_init(){
 	// Removing the existing menu first.
 	chrome.contextMenus.removeAll();
@@ -21,4 +16,6 @@ function menu_init(){
 		}
 	});
 }
-menu_init(); // re-initializing menu so it appears when chrome starts.
+
+// re-initializing menu so it appears when chrome starts.
+menu_init();
