@@ -8,7 +8,6 @@ function menu_init(){
 	var parent = chrome.contextMenus.create({"title": "I did this:", contexts:["all"]});
 
 	// Retrieving Verbs
-	
 	chrome.storage.sync.get("collection", function(obj){
 		verbsCollection = obj; // For later use.
 		for(var index in obj.collection){
