@@ -17,7 +17,7 @@ function clicked(verb, object) {
 	//Setting vars
 	var objectText;
 	var objecturl;
-	var verbUrl = verbsCollection.collection[verb]["url"]; //Retrieving verb url from verbsCollection (set in verbs.js).
+	var verbUrl = verbsCollection.collection[verb]["url"]; //Retrieving verb url from verbsCollection (set in menu.js).
 
 	chrome.tabs.query({ currentWindow: true, active: true}, function(tab){
 		if(object == undefined){
