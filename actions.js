@@ -77,7 +77,7 @@ function clicked(verb, object) {
 				if(result[0].xhr.status == 204){
 					// Giving the user feedback that the statement was sent.
 					var notification = webkitNotifications.createNotification(
-						'img/Tick_48x48.png',  // icon url - can be relative
+						'img/tick_48x48.png',  // icon url - can be relative
 						'I did this!',  // notification title
 						'Your statement has been sent!'  // notification body text
 					);
@@ -90,7 +90,7 @@ function clicked(verb, object) {
 				}else{
 					// An error has occured, once again we give the user feedback
 					var notification = webkitNotifications.createNotification(
-						'img/Error_48x48.png',
+						'img/error_48x48.png',
 						'Something went wrong!',
 						'Your statement was not sent, please check your configurations.'
 					);

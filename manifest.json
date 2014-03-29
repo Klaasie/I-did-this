@@ -3,10 +3,11 @@
 	"description": "Creating Tin Can statements is as easy as right clicking!",
 	"version": "1.0",
 	"icons": {
-		"16": "img/Tick_16x16.png",
-		"24": "img/Tick_24x24.png",
-		"32": "img/Tick_32x32.png",
-		"48": "img/Tick_48x48.png"
+		"16": "img/tick_16x16.png",
+		"24": "img/tick_24x24.png",
+		"32": "img/tick_32x32.png",
+		"48": "img/tick_48x48.png",
+		"128": "img/tick_128x128"
 	},
 	"options_page": "options.html",
 	"permissions": [
